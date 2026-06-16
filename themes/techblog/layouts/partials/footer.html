@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <ul class="footer-links">
+      {{ with .Site.Params.github }}<li><a href="https://github.com/{{ . }}" target="_blank">GitHub</a></li>{{ end }}
+      <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
+    </ul>
+    <p>&copy; {{ now.Year }} {{ .Site.Title }} · Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></p>
+  </div>
+</footer>

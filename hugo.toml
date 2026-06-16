@@ -1,0 +1,52 @@
+baseURL = "https://yourusername.github.io/hugo-blog/"
+locale = "zh-cn"
+title = "竹影清风"
+theme = "techblog"
+paginate = 10
+summaryLength = 70
+
+[params]
+  description = "一个关于编程、技术和折腾的个人博客"
+  author = "Hei"
+  bio = "热爱编程与技术的开发者，记录学习和实践的点滴。"
+  github = "tomlong2000"
+  heroTitle = "以竹为友，以码为乐"
+  heroSubtitle = "记录技术旅途中的每一缕清风"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    guessSyntax = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[menu]
+  [[menu.main]]
+    name = "文章"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 2
+  [[menu.main]]
+    name = "归档"
+    url = "/categories/"
+    weight = 3
+  [[menu.main]]
+    name = "关于"
+    url = "/about/"
+    weight = 4

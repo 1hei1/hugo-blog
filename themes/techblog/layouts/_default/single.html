@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="container container--wide">
+  <div class="page-layout">
+    <div class="main-content">
+      <header class="article-header">
+        <h1>{{ .Title }}</h1>
+        <div class="article-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time>
+          <span>·</span>
+          <span>{{ .ReadingTime }} 分钟阅读</span>
+          {{ with .Params.categories }}
+          <span>·</span>
+          {{ range . }}
+          <a class="tag" href="{{ "categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ with .Params.tags }}
+        <div class="article-card__tags" style="margin-top: 0.6rem;">
+          {{ range . }}
+          <a class="tag" href="{{ "tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </header>
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+    </div>
+    {{ if .TableOfContents }}
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h3>目录</h3>
+        {{ partial "toc.html" . }}
+      </div>
+    </aside>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

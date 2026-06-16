@@ -1,0 +1,14 @@
+<div class="sidebar-section">
+  <h3>标签</h3>
+  <div class="sidebar-tags">
+    {{ range .Site.Taxonomies.tags }}
+    <a class="tag" href="{{ "tags/" | relURL }}{{ .Page.Title | urlize }}/">#{{ .Page.Title }} <sup>{{ .Count }}</sup></a>
+    {{ end }}
+  </div>
+</div>
+{{ with .Site.Params.bio }}
+<div class="sidebar-section">
+  <h3>关于</h3>
+  <p style="font-size: 0.9rem; color: var(--text-secondary);">{{ . }}</p>
+</div>
+{{ end }}

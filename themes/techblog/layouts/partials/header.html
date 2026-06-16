@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="{{ .Site.BaseURL }}">{{ .Site.Title }}<span class="logo-sub">TECH BLOG</span></a>
+    <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    <nav>
+      <ul class="nav-links">
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a></li>
+        {{ end }}
+        <li><button class="theme-toggle" aria-label="切换主题">🌙</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="container">
+  <div class="taxonomy-header">
+    <h1><a class="tag" href="{{ .Permalink }}">#{{ .Title }}</a></h1>
+    <p style="color: var(--text-m); margin-top: 0.4rem;">共 {{ len .Pages }} 篇文章</p>
+  </div>
+  {{ range $i, $p := .Pages }}
+    {{ if $i }}<div class="bamboo-divider">— 竹 —</div>{{ end }}
+    {{ partial "article-card.html" $p }}
+  {{ end }}
+</div>
+{{ end }}

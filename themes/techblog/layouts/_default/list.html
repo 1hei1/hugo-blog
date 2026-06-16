@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ if .IsHome }}
+<div class="site-hero">
+  <h1>{{ .Site.Params.heroTitle | default "以竹为友，以码为乐" }}</h1>
+  <p>{{ .Site.Params.heroSubtitle | default "记录技术旅途中的每一缕清风" }}</p>
+</div>
+{{ end }}
+<div class="container">
+  {{ if not .IsHome }}
+  <h1 class="page-title">{{ .Title }}</h1>
+  {{ end }}
+  {{ $pages := where .Pages "Type" "posts" }}
+  {{ if .IsHome }}
+    {{ $pages = where .Site.RegularPages "Type" "posts" }}
+  {{ end }}
+  {{ $paginator := .Paginate $pages 10 }}
+  {{ range $i, $p := $paginator.Pages }}
+    {{ if $i }}<div class="bamboo-divider">— 竹 —</div>{{ end }}
+    {{ partial "article-card.html" $p }}
+  {{ end }}
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination">
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}">&laquo;</a>
+    {{ end }}
+    {{ range $paginator.Pagers }}
+    <span class="{{ if eq . $.Paginator }}active{{ end }}">
+      <a href="{{ .URL }}">{{ .PageNumber }}</a>
+    </span>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}">&raquo;</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</div>
+{{ end }}
